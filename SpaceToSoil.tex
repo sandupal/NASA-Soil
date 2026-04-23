@@ -1,0 +1,197 @@
+\documentclass[11pt,letterpaper]{article}
+
+%\renewcommand{\familydefault}{\rmdefault}
+
+
+% aas: use the margin parameter to adjust margin if too long, 1" is standard for nsf
+\usepackage[margin=1.0in]{geometry}
+\usepackage{wrapfig}
+\usepackage{mathptmx} 
+\usepackage{array}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage[most]{tcolorbox} % for colored/framed boxes
+\usepackage{xcolor}          % color support
+\usepackage{ifthen}
+\usepackage{url}
+\usepackage{amssymb}
+\usepackage{subcaption}
+%\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{cite}
+\usepackage{caption}
+%\input{defs}
+\usepackage[utf8]{inputenc}
+ \usepackage{tgbonum}
+\usepackage[osf]{mathpazo}
+\usepackage{mathrsfs, amsmath}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{pbox}
+\usepackage{mdframed}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,shapes.symbols,chains, shapes,snakes}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage[normalem]{ulem}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{natbib}
+
+\usepackage{setspace}
+\setstretch{1.0} 
+\usepackage{anyfontsize}
+\fontsize{10}{12}\selectfont 
+
+
+\usepackage{todonotes} % for comments
+\newcommand{\jan}[1]{\todo[inline,color=blue!20!white]{\textbf{Jan:} #1}}
+
+%\titleformat{\section}
+%  {\large\bfseries\color{black}}
+%  {\thesection}{1em}{}
+  
+%  \titleformat{\subsection}
+ % {\normal\bfseries\color{black}}
+ % {\thesubsection}{1em}{}
+  
+\newcommand{\tosay}{true}
+\newcommand{\elza}[1]{ %
+{\ifthenelse{\boolean{\tosay}}{\begin{quotation}\textcolor{red}{Elza: #1}\end{quotation}}{}}}
+\newcommand{\efe}[1]{ %
+{\ifthenelse{\boolean{\tosay}}{\begin{quotation}\textcolor{green}{Efe: #1}\end{quotation}}{}}}
+\newcommand{\sid}[1]{ %
+{\ifthenelse{\boolean{\tosay}}{\begin{quotation}\textcolor{magenta}{Siddharth: #1}\end{quotation}}{}}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\pr}{\mathbb P}
+\newcommand{\agn}[1]{
+	\begin{align}
+	#1
+	\end{align}
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{prop}{Proposition-}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+
+\theoremstyle{remark}	
+\newtheorem{remark}{Remark}
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\ex}{\mathbb E}
+\newcommand{\ind}{\operatorname{\mathds{1}}}
+\allowdisplaybreaks
+
+
+
+\begin{document}
+
+
+\pagestyle{empty}
+\setcounter{page}{1}
+
+
+
+%\bibliography{nyurefs,burefs}
+%\newpage\pagestyle{fancy}\fancyhf{}
+%\fancyfoot[C]{\footnotesize R-\thepage}
+%\setcounter{page}{1}
+
+
+
+
+%\newpage
+%\fancyfoot[C]{\footnotesize \thepage}
+%\setcounter{page}{1}
+\begin{center}
+{\Large \textbf{
+NASA Space To Soil Challenge
+}} 
+\end{center}
+
+% Judges Criteria:
+% The solution proposes a novel adaptive sensing or onboard processing approach to enhance regenerative agriculture, forestry, or a similar land resilience objective.
+% Solution design articulates system integration thinking and provides a full-stack implementation plan with external technologies.
+% End user specifications are well-defined for application to regenerative agriculture, forestry, or a similar land resilience objective.
+% The solution provides evidence that it can function as described within SmallSat constraints.
+% The solution results in a measurable and significant improvement to the science need, through the use of adaptive sensing or onboard processing aligned with mission requirements.
+% The potential impact of the solution to regenerative agriculture or forestry is quantifiably and convincingly articulated (such as data downlink reduction, cost efficiencies, or SWAP metrics).
+% The solution applies market analysis to identify industry gaps and describe the development process from base concept to Minimum Viable Product (MVP).
+% There is thorough discussion of the solution's market generalization to address applications beyond agricultural or forestry purposes.
+% There is clear evidence of the team's quallifications across domains for project execution.
+% The submission paper clearly articulates the solution, its benefits, and its feasibility.
+% The video presentation effectively communicates the solution's benefits and key design aspects.
+% The solution's key capabilities are substantiated by the provided software code (software) or schematics/diagrams (hardware).
+
+\section{Introduction} \label{sec:intro}
+% Brief overview of the proposed solution and description of your team/organization.\\
+% Provide a condensed summary of how your solution addresses all 5 of the Judge Criteria concepts.
+
+Regenerative agriculture is the process of restoring degraded soils using management practices (e.g., adaptive grazing, no-till planting, no or limited use of pesticides and synthetic fertilizer, etc.) based on ecological principles. Regenerative agriculture strives to work with nature rather than against it. It is more than just being sustainable. It is about reversing degradation and building up the soil to make it healthier than its current state. Therefore, real time  detection of land degradation can act as the "nervous system" of a farm—providing the immediate feedback needed to steer complex ecological processes and determine if a certain process is proving to be effective. Regenerative practices, such as intensive rotational grazing or multi-species cover cropping, are dynamic. Traditional soil testing is far too slow to inform daily operations. For example, Real-time monitoring can detect when "trampling" or "overgrazing" starts to expose bare soil. This allows a farmer to move livestock immediately before the protective soil crust is broken and erosion begins. Another example where such real time detection would be extremely helpful is satellite data detecting a "thinning" of the biomass or a structural failure in the soil after a minor rain event. Managers can intervene with targeted seeding or mulching before the next major storm. For large-scale food companies (the "Corporate Ag" consumer base), real-time detection in their supply chain provides an early warning system for regional crop failures, allowing them to shift procurement strategies before a local "land collapse" impacts their bottom line. Regenerative agriculture is increasingly funded by Carbon Credits and Ecosystem Service Payments. These markets demand high-fidelity verification (MRV: Monitoring, Reporting, and Verification). Soil organic carbon is highly correlated with soil structure and stability. Real-time erosion detection proves that the "sequestered" carbon isn't being washed away into local streams, providing the "permanence" guarantee that carbon buyers require. In precision agriculture, which is the focus area for agri-tech, instead of treating the whole field as a single unit, technology allows for surgical precision. Some examples are nutrient application can be adjusted based on real-time runoff risk to prevent leaching, tilling/ disturbance can be restricted in areas where real-time sensors show high structural fragility, dynamic irrigation can be employed that pauses when sensors detect initial signs of soil slumping or soil ponding.
+
+In sustainable forestry, the management cycle spans decades, but the most catastrophic soil loss often occurs in a matter of hours—typically during timber harvesting, road construction, or immediately following a wildfire. Real-time detection can track the regrowth of the herbaceous layer. If a specific patch isn't greening up or shows structural settling, managers can deploy targeted "hydroseeding" or mulch to stabilize the area before the first winter storms. Wildfires create "hydrophobic" (water-repellent) soils. When rain hits these areas, it doesn't soak in; it slides, leading to debris flows. In burnt-over areas, real-time detection acts as a life-safety system for downstream communities. By identifying the exact moment of soil failure on a charred ridge, the system provides a lead time for evacuations or emergency drainage work. Instead of expensive blanket aerial seeding after a fire, real-time data identifies the 5\% of the landscape that is at the highest risk for mass erosion, allowing for a 90\% reduction in mitigation costs. Real-time monitoring provides an immutable digital audit for carbon and biodiversity credits. It proves to investors that the timber was extracted with Zero Net Erosion, a claim that currently relies on infrequent, manual spot-checks.
+Apart from the benefits that real time soil erosion monitoring can accrue to the fields of regenerative agriculture and sustainable forestry, there are a host of other land resilience applications where real time erosion monitoring can be a game changer. Protecting hydropower and water management is an area where real time erosion detection can help prevent siltation crisis where the washed top soil ends up in reservoirs downstream causing siltation and posing a threat to expensive hydroelectric turbines via abrasion. By detecting a drift in land stability upstream, water authorities can deploy temporary sediment traps or adjust dam operations before a sediment plume hits the intake. This extends the operational life of multi-billion dollar energy assets. Land degradation is often the precursor to catastrophic mass-wasting events like landslides. SoilSentinel’s persistent embeddings can detect the subtle slumping or loss of vegetation armor on steep slopes that overlook highways, rail lines, or pipelines. Instead of reacting to a collapsed tunnel or a ruptured gas line, civil engineers can be given an autonomous alert of structural drift, allowing for pre-emptive stabilization. Real-time detection to identify degradation hotspots in remote regions can enable authorities to deploy measures like assisted natural regeneration to stabilize a community's food source before environmental failure triggers a migration crisis. Hence, the detection of soil erosion in real time can act as a key enabler in the areas of regenerative agriculture, regenerative forestry and a host of land resilience applications. 
+
+This motivated us to envisage a methodology SoilSentinel, an advanced CubeSat concept designed by Darwin Geospatial and Johns Hopkins University for the 2026 NASA Space-to-Soil Challenge. This satellite aims to detect soil erosion and land degradation in real time by utilizing a distilled AI model and onboard processing to filter data. By maintaining spatial embeddings and identifying deviations from seasonal baselines, the system can autonomously trigger alerts while reducing bandwidth requirements by 95\%. The briefing details the **hardware specifications**, including an NVIDIA AI processor, and establishes a rigorous **development timeline** leading to the May deadline. Ultimately, the project demonstrates how **knowledge distillation** and **adaptive sensing** can revolutionize global environmental monitoring through efficient, autonomous space technology.
+
+\section{Proposed Solution Details}
+% Explanation of proposed adaptive sensing or onboard processing approach to regenerative agriculture or forestry, or a similar land resilience objective. \\
+% Detail the problem statement for your solution.\\
+% Discuss the selected land use algorithm(s) and small satellite technical requirements. \\
+% Outline mission requirements in alignment with small satellite onboard constraints such as power, compute, and bandwidth.\\
+% Explain solution design integration into a current commercial market full-stack implementation system.
+The proposed solution consists of the SoilSentinel advanced 6U CubeSat concept specifically designed to detect soil erosion and land degradation autonomously and in real time. It is conceptualised to be built on a Terran Orbital TRIUMPH satellite bus weighing approximately 12 kg,  utilizing a 100 W deployable solar array and features an X-band downlink capable of 50 Mbps. To capture detailed land surface data, the satellite is equipped with dual optical sensors: a Simera MultiScape100 CIS for Visible and Near-Infrared (VNIR) imagery across 8 bands, and a Dragonfly Chameleon SWIR sensor offering 4 Shortwave Infrared bands without the need for cryogenic cooling. The core intelligence of the system is powered by an onboard NVIDIA Jetson Orin Nano processor, which executes complex AI inference at the edge within strict power and size constraints (15W and 8 GB RAM).
+
+Instead of relying on ground-based computing, SoilSentinel processes all captured imagery directly in space using a highly optimized, 3-megabyte MobileUNet "student" model. Prior to launch, this model is created via knowledge distillation from a massive 300-million-parameter Prithvi-EO-2.0 "teacher" model trained on NASA Harmonized Landsat Sentinel (HLS) data. During a satellite overpass, the sensors capture raw 12-band imagery, which is radiometrically calibrated down to five essential bands (Blue, Green, Red, Near-Infrared, and Shortwave-Infrared 1). The system then divides the images into 224x224 pixel chips, aggressively masking out clouds and oceans to reject unusable data, before passing the remaining imagery through the MobileUNet model to generate a degradation risk score for every pixel in roughly 0.05 milliseconds per chip.
+
+The most groundbreaking aspect of the SoilSentinel mission is its novel approach to monitoring land changes using 'persistent spatial embeddings'. Unlike traditional satellites that simply capture and transmit massive raw image files, SoilSentinel maintains a continuous mathematical memory of the Earth's surface. Specifically, it assigns and stores a '128-dimensional memory vector' for every single square kilometer of monitored cropland. This embedding acts as a localized, highly compressed digital signature of the land's current state, allowing the satellite to remember what specific parcels of land typically look like without needing constant interaction with ground stations. Presently, no existing system utilizes this kind of onboard spatial memory bank.
+This persistent memory is actively managed using an Exponential Moving Average (EMA). Every time the satellite passes over a monitored region, the newly computed 128-dimensional embedding is mathematically blended with the historical baseline. The onboard AI continuously compares the real-time embedding against monthly baseline expectations uploaded from NASA MODIS datasets. The system specifically watches for significant "drifts" from these baselines, such as a drop in the Normalized Difference Vegetation Index (NDVI) greater than 0.15, or a rise in the Bare Soil Index (BSI) greater than 0.10. These metrics serve as direct indicators of anomalous land surface changes, such as sudden crop failure, ongoing desertification, or topsoil loss. When an embedding drifts beyond its normal seasonal parameters, the satellite acts autonomously. Rather than downlinking a massive 200 MB raw scene to Earth, the system triggers a targeted alert containing coordinates, a severity score, and an adaptive re-imaging schedule. It downlinks only these tiny ~50 KB anomaly alerts, effectively reducing the satellite's bandwidth usage by approximately 95\%. Normal, unflagged data is simply discarded onboard. Furthermore, the system autonomously instructs the satellite to adaptively re-image the flagged problem areas on its very next orbit, creating a dynamic, highly responsive sentinel for global land degradation.
+
+\section{Potential Impact}
+% Benefits and impact of the proposed solution.\\
+% How does this solution build upon current research and market capabilities?\\
+% What effect does the solution have on technical variables (as defined in Proposed Solution Detail) compared to traditional methods for regenerative agriculture or forestry?\\
+% Provide concrete examples and scenarios where the solution outperforms current adaptive sensing or onboard processing capabilities, and highlight solution limitations.\\
+
+
+\section{Team Experience and Market Evaluation}
+% Qualifications and expertise of team members (multidisciplinary teams are encouraged).\\
+% Past projects or research relevant to the proposed solution.\\
+% Analysis for how the proposed solution can eventually be scaled or integrated into future markets.\\
+% Identification of potential product users and how target users inform solution design criteria.\\
+% Analysis of potential market applications beyond agricultural or forestry purposes.\\
+
+
+
+
+\section{Expected Outcomes} 
+% Articulate your development process from base concept to Minimum Viable Product (MVP) based on market analysis and industry gaps.
+% What are your next steps if selected as a Finalist?
+
+
+ 
+\section{Conclusion}
+
+% \bibliographystyle{ieeetr}
+\setcounter{page}{1}
+% \bibliography{project,drgona}
+
+
+\end{document}
+
+
